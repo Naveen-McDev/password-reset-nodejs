@@ -35,7 +35,7 @@ const verifyToken = async (req, res) => {
   // res.status(200).json({success: true, data: decoded.email});
   // //http://localhost:3000/resetpassword
 
-  res.redirect(301, `http://localhost:3000/resetpassword?token=${req.body}`);
+  res.redirect(301, `https://authentication01.netlify.app/resetpassword?token=${req.body}`);
 };
 
 module.exports = verifyToken;
