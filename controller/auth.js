@@ -60,7 +60,7 @@ const registerUser = async (req, res) => {
       const token = tokenGenerator({ email: newUser.email });
 
       //creating verification link
-      const link = `https://authentication-bc.herokuapp.com:${process.env.PORT}/api/email/verify?token=${token}`;
+      const link = `https://${req.hostname}:${process.env.PORT}/api/email/verify?token=${token}`;
 
       //send email
       const sendMail = await sendVerificationEmail(newUser.email, link);
@@ -184,7 +184,7 @@ const forgotpassword = async (req, res) => {
     const token = tokenGenerator({ email: userExist.email });
 
     //creating verification link
-    const link = `https://authentication-bc.herokuapp.com:${process.env.PORT}/api/auth/verifyToken?token=${token}`;
+    const link = `https://${req.hostname}:${process.env.PORT}/api/auth/verifyToken?token=${token}`;
 
     //send email
     const sendMail = await sendForgotPasswordEmail(userExist.email, link);
