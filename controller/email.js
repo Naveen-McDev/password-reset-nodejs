@@ -34,7 +34,7 @@ const verifyEmail = async(req, res) => {
   userExist.verified = true;
   await userExist.save();
 
-  res.redirect(301, "http://localhost:3000/login");
+  res.redirect(301, "https://authentication01.netlify.app/login");
 };
 
 module.exports = {verifyEmail};
