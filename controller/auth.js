@@ -1,10 +1,16 @@
+//bcrypt.js package
 const bcrypt = require("bcryptjs");
+//importing user model
 const User = require("../models/user");
+
+//generating token
 const tokenGenerator = require("../config/createToken");
+//email 
 const {
   sendVerificationEmail,
   sendForgotPasswordEmail,
 } = require("../config/sendEmail");
+
 const SendmailTransport = require("nodemailer/lib/sendmail-transport");
 
 //User registration controller
@@ -60,7 +66,7 @@ const registerUser = async (req, res) => {
       const token = tokenGenerator({ email: newUser.email });
 
       //creating verification link
-      const link = `http://${req.hostname}:${process.env.PORT}/api/email/verify?token=${token}`;
+      const link = `${process.env.SERVER_URL}/api/email/verify?token=${token}`;
 
       //send email
       const sendMail = await sendVerificationEmail(newUser.email, link);
@@ -184,7 +190,7 @@ const forgotpassword = async (req, res) => {
     const token = tokenGenerator({ email: userExist.email });
 
     //creating verification link
-    const link = `http://${req.hostname}:${process.env.PORT}/api/auth/verifyToken?token=${token}`;
+    const link = `${process.env.SERVER_URL}/api/auth/verifyToken?token=${token}`;
 
     //send email
     const sendMail = await sendForgotPasswordEmail(userExist.email, link);

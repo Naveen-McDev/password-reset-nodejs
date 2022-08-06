@@ -1,3 +1,4 @@
+//nodemailer package
 const nodemailer = require("nodemailer");
 
 //to send email to fake account
@@ -11,18 +12,9 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-//to send email to real email account
-// const transporter = nodemailer.createTransport({
-//   host: "smtp.gmail.com",
-//   port: 465,
-//   secure: true, //true for port 465, // false for other port
-//   auth: {
-//     user: account.user, //generated ethereal user
-//     pass: account.pass, //generated ethereal password
-//   },
-// });
-
 module.exports = {
+
+  //send verification email on registration
   sendVerificationEmail: async (receiverAddress, link) => {
   let error = false;
   try {
@@ -38,6 +30,8 @@ module.exports = {
   }
   return error;
 },
+
+//send forgot password email on clicking forgotPassword
   sendForgotPasswordEmail: async (receiverAddress, link) => {
   let error = false;
   try {

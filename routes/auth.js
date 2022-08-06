@@ -32,12 +32,12 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 
 //Forgot password Api
-router.post("/forgotpassword",authorize, forgotpassword);
+router.post("/forgotpassword", forgotpassword);
 
 //Verify token
 router.get("/verifyToken", verifyToken);
 
 //Reset Password
-router.post("/resetpassword",authorize, resetpassword);
+router.post("/resetpassword", resetpassword);
 
 module.exports = router;

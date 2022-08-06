@@ -31,11 +31,9 @@ const verifyToken = async (req, res) => {
     return res.status(404).json({ success: false, message: "Invalid Token!" });
   }
 
-  // //response
-  // res.status(200).json({success: true, data: decoded.email});
-  // //http://localhost:3000/resetpassword
-
-  res.redirect(301, `http://localhost:3000/resetpassword?token=${req.body}`);
+  //response
+  // res.status(200).json({success: true, data: decoded.email})
+  res.redirect(301, `${process.env.CLIENT_URL}/resetpassword?token=${token}`);
 };
 
 module.exports = verifyToken;
